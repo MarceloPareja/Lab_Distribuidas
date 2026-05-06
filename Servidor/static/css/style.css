@@ -1,0 +1,152 @@
+/* ── Reset básico ── */
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #f4f4f9;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Pantalla de Login ── */
+#login-screen {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 350px;
+  text-align: center;
+}
+
+#login-screen h1 { margin-bottom: 0.5rem; font-size: 1.5rem; }
+#login-screen p { color: #666; margin-bottom: 1.5rem; }
+
+.input-group { margin-bottom: 1rem; text-align: left; }
+.input-group label { font-size: 0.85rem; font-weight: bold; color: #555; }
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+button:hover { background-color: #0056b3; }
+
+/* ── Contenedor Principal del Chat ── */
+#chat-screen {
+  display: none;
+  width: 900px;
+  height: 600px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.chat-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  grid-template-rows: 60px 1fr 60px;
+  height: 100%;
+}
+
+/* ── Cabecera (Header) ── */
+.chat-header {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ccc;
+}
+
+.chat-header .title { font-weight: bold; }
+
+#conn-status { font-size: 0.85rem; color: #666; }
+#conn-dot {
+  display: inline-block;
+  width: 10px; 
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+  margin-right: 5px;
+}
+#conn-dot.connected { background-color: #28a745; }
+
+/* ── Área de Mensajes ── */
+#messages {
+  grid-column: 1;
+  grid-row: 2;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.msg { max-width: 75%; }
+.msg.own { align-self: flex-end; }
+.msg.other { align-self: flex-start; }
+
+.msg-header { font-size: 0.8rem; color: #666; margin-bottom: 4px; }
+.msg-username { font-weight: bold; color: #333; }
+
+.msg-body {
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #e9ecef;
+  line-height: 1.4;
+}
+.msg.own .msg-body { background-color: #d1e7dd; /* Verde clarito para tus mensajes */ }
+
+/* Notificaciones del sistema */
+.msg.system { align-self: center; text-align: center; }
+.msg.system .msg-body { background: none; color: #888; font-size: 0.85rem; font-style: italic; }
+
+/* ── Barra de Entrada de Texto ── */
+.chat-input-bar {
+  grid-column: 1;
+  grid-row: 3;
+  display: flex;
+  gap: 10px;
+  padding: 10px 1.5rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #ccc;
+}
+
+.chat-input-bar button { width: auto; padding: 0 20px; }
+
+/* ── Panel Lateral de Usuarios ── */
+#user-list-panel {
+  grid-column: 2;
+  grid-row: 2 / 4;
+  border-left: 1px solid #ccc;
+  background-color: #fcfcfc;
+  padding: 1.5rem;
+}
+
+.sidebar-title { font-size: 0.85rem; font-weight: bold; color: #666; margin-bottom: 10px; }
+
+.user-item { font-size: 0.9rem; padding: 5px 0; color: #444; }
+.user-item.me { font-weight: bold; color: #007bff; }
